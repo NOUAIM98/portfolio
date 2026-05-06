@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useLanguage } from "./LanguageContext";
 import FadeIn from "./FadeIn";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative flex min-h-[90vh] items-center pt-20">
       {/* Background glow effects */}
@@ -14,21 +17,19 @@ export default function HeroSection() {
         <div className="max-w-4xl">
           <FadeIn>
             <div className="mb-6 inline-flex items-center rounded-full border border-border-light bg-surface-light/50 px-4 py-1.5 backdrop-blur-sm">
-              <span className="text-xs font-medium text-muted">Software Engineer</span>
+              <span className="text-xs font-medium text-muted">{t("heroBadge")}</span>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.1}>
             <h1 className="mb-8 text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-[80px] leading-[1.1]">
-              Full-Stack & Mobile Engineer <br className="hidden md:block" />
-              Building <span className="text-accent">Scalable Apps</span> & <br className="hidden md:block" />
-              <span className="text-accent">AI Systems</span>
+              {t("heroTitle")}
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.2}>
             <p className="mb-10 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-              I develop production-ready mobile and web applications with real-world impact in healthcare and AI platforms.
+              {t("heroSubtitle")}
             </p>
           </FadeIn>
 
@@ -38,7 +39,7 @@ export default function HeroSection() {
                 href="#projects"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-accent-light"
               >
-                View Projects
+                {t("heroCta")}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"

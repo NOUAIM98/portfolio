@@ -12,9 +12,23 @@ const navLinks = [
   { href: "/#contact", label: "Contact" },
 ];
 
+import { useLanguage } from "./LanguageContext";
+
 export default function Navbar() {
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/", label: t("navHome") },
+    { href: "/#projects", label: t("navProjects") },
+    { href: "/#about", label: t("navAbout") },
+    { href: "/#contact", label: t("navContact") },
+  ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "fr" : "en");
+  };
 
   return (
     <nav
@@ -31,43 +45,63 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition-colors duration-200 ${
-                pathname === link.href
-                  ? "text-foreground"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <div className="flex items-center gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  pathname === link.href
+                    ? "text-foreground"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="h-4 w-[1px] bg-border" />
+
+          {/* Language Switcher */}
+          <button
+            onClick={toggleLanguage}
+            className="flex h-8 w-12 items-center justify-center rounded-md border border-border bg-surface-light text-[10px] font-bold uppercase tracking-wider text-foreground transition-all hover:bg-surface active:scale-95"
+            aria-label="Switch language"
+          >
+            {language === "en" ? "FR" : "EN"}
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          id="mobile-menu-button"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-1.5 md:hidden"
-          aria-label="Toggle menu"
-        >
-          <motion.span
-            animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="block h-0.5 w-6 bg-foreground"
-          />
-          <motion.span
-            animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-            className="block h-0.5 w-6 bg-foreground"
-          />
-          <motion.span
-            animate={
-              mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
-            }
-            className="block h-0.5 w-6 bg-foreground"
-          />
-        </button>
+        {/* Mobile Actions */}
+        <div className="flex items-center gap-4 md:hidden">
+          <button
+            onClick={toggleLanguage}
+            className="flex h-8 w-10 items-center justify-center rounded-md border border-border bg-surface-light text-[10px] font-bold uppercase tracking-wider text-foreground transition-all hover:bg-surface"
+          >
+            {language === "en" ? "FR" : "EN"}
+          </button>
+
+          <button
+            id="mobile-menu-button"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="flex flex-col gap-1.5"
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-foreground"
+            />
+            <motion.span
+              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="block h-0.5 w-6 bg-foreground"
+            />
+            <motion.span
+              animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-foreground"
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

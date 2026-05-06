@@ -1,119 +1,159 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
+import { useLanguage } from "./LanguageContext";
 
 export default function ContactSection() {
-  return (
-    <section id="contact" className="scroll-mt-20 py-24 md:py-32 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute right-0 top-1/4 -z-10 h-96 w-96 rounded-full bg-accent/5 blur-[120px]" />
-      
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-20 lg:grid-cols-2 items-start">
-          <div>
-            <SectionHeading label="Get in Touch" title="Let's build something extraordinary" />
-            <FadeIn delay={0.1}>
-              <p className="mt-6 text-lg leading-relaxed text-muted max-w-md">
-                I&apos;m currently open to new opportunities and interesting projects. Whether you have a specific idea or just want to chat about tech, I&apos;d love to hear from you.
-              </p>
-            </FadeIn>
-            
-            <div className="mt-16 space-y-10">
-              <FadeIn delay={0.2}>
-                <div className="group">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-3 group-hover:text-accent transition-colors">Direct Email</p>
-                  <a href="mailto:nouaim@example.com" className="text-2xl md:text-3xl font-bold text-foreground hover:text-accent transition-all duration-300">
-                    nouaim@example.com
-                  </a>
-                </div>
-              </FadeIn>
+  const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+  const email = "mn.elaakil@gmail.com";
 
-              <FadeIn delay={0.3}>
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-6">Connect on Socials</p>
-                  <div className="flex flex-wrap gap-4">
-                    {[
-                      { label: "GitHub", href: "https://github.com/NOUAIM98", icon: "github" },
-                      { label: "LinkedIn", href: "https://www.linkedin.com/in/mohamed-nouaim-el-aakil-492748227/", icon: "linkedin" },
-                    ].map((social) => (
-                      <a 
-                        key={social.label}
-                        href={social.href} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="inline-flex items-center gap-3 rounded-2xl border border-border bg-surface px-6 py-3.5 text-sm font-bold text-foreground transition-all duration-300 hover:border-accent/40 hover:bg-surface-hover hover:-translate-y-1"
-                      >
-                         {social.label}
-                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17L17 7"/></svg>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </FadeIn>
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  };
+
+  return (
+    <section id="contact" className="scroll-mt-20 py-20 md:py-32">
+      <div className="mx-auto max-w-[800px] px-6 text-center">
+        <FadeIn>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+            {t("contactTitle")}
+          </h2>
+        </FadeIn>
+
+        <FadeIn delay={0.1}>
+          <p className="mx-auto mb-12 max-w-md text-lg text-muted">
+            {t("contactSubtitle")}
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <div className="group relative mx-auto flex max-w-fit flex-col items-center gap-6 rounded-3xl border border-border bg-surface p-8 shadow-xl transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_50px_-12px_rgba(109,90,230,0.2)] sm:p-10">
+            <div className="flex items-center gap-4 text-xl font-bold text-foreground transition-all group-hover:text-accent sm:text-2xl md:text-3xl">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-accent"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <a
+                href={`mailto:${email}`}
+                className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 group-hover:after:w-full"
+                title={t("sendEmail")}
+              >
+                {email}
+              </a>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
+                onClick={copyToClipboard}
+                className="inline-flex items-center gap-2 rounded-xl border border-border-light bg-surface-light px-6 py-3 text-sm font-semibold text-foreground transition-all hover:bg-surface-hover active:scale-95"
+              >
+                {copied ? (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-green-500"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {t("emailCopied")}
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                    </svg>
+                    {t("copyEmail")}
+                  </>
+                )}
+              </button>
+
+              <a
+                href={`mailto:${email}`}
+                className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20 active:scale-95"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+                {t("sendEmail")}
+              </a>
             </div>
           </div>
+        </FadeIn>
 
-          <FadeIn delay={0.4}>
-            <div className="relative group">
-              <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-tr from-accent/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-              <form className="relative rounded-[2rem] border border-border bg-surface/50 backdrop-blur-sm p-10 shadow-2xl">
-                <div className="grid gap-8 sm:grid-cols-2">
-                  <div className="space-y-3">
-                    <label htmlFor="firstName" className="text-xs font-bold uppercase tracking-widest text-muted-light">First name</label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      placeholder="Jane"
-                      className="w-full rounded-2xl border border-border bg-background/50 px-5 py-4 text-sm text-foreground outline-none transition-all focus:border-accent focus:bg-background focus:ring-4 focus:ring-accent/5"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <label htmlFor="lastName" className="text-xs font-bold uppercase tracking-widest text-muted-light">Last name</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      placeholder="Doe"
-                      className="w-full rounded-2xl border border-border bg-background/50 px-5 py-4 text-sm text-foreground outline-none transition-all focus:border-accent focus:bg-background focus:ring-4 focus:ring-accent/5"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-8 space-y-3">
-                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-muted-light">Email address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="jane@example.com"
-                    className="w-full rounded-2xl border border-border bg-background/50 px-5 py-4 text-sm text-foreground outline-none transition-all focus:border-accent focus:bg-background focus:ring-4 focus:ring-accent/5"
-                    required
-                  />
-                </div>
-
-                <div className="mt-8 space-y-3">
-                  <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-muted-light">Your Message</label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    placeholder="Tell me about your project..."
-                    className="w-full resize-none rounded-2xl border border-border bg-background/50 px-5 py-4 text-sm text-foreground outline-none transition-all focus:border-accent focus:bg-background focus:ring-4 focus:ring-accent/5"
-                    required
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="mt-10 w-full rounded-2xl bg-accent px-6 py-5 text-sm font-bold text-white transition-all duration-300 hover:bg-accent-light shadow-lg shadow-accent/20 hover:shadow-accent/40 active:scale-[0.98]"
+        {/* Social Links Sub-footer */}
+        <FadeIn delay={0.3}>
+          <div className="mt-20 flex flex-col items-center justify-center gap-6 border-t border-border pt-12">
+            <div className="flex gap-6">
+              {[
+                { label: "GitHub", href: "https://github.com/NOUAIM98", icon: "github" },
+                { label: "LinkedIn", href: "https://www.linkedin.com/in/mohamed-nouaim-el-aakil-492748227/", icon: "linkedin" },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted transition-colors hover:text-accent"
                 >
-                  Send message
-                </button>
-              </form>
+                  {social.label}
+                </a>
+              ))}
             </div>
-          </FadeIn>
-        </div>
+            <p className="text-xs text-muted-light">
+              © {new Date().getFullYear()} MOHAMED NOUAIM EL AAKIL. All rights reserved.
+            </p>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

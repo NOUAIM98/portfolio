@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   ],
 };
 
+import { LanguageProvider } from "@/components/LanguageContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,9 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body className="min-h-screen bg-background font-sans text-foreground">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

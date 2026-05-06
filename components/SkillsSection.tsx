@@ -4,11 +4,15 @@ import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { skillCategories } from "@/data/skills";
 
+import { useLanguage } from "./LanguageContext";
+
 export default function SkillsSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="scroll-mt-20 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading label="Expertise" title="Skills & Technologies" />
+        <SectionHeading label={t("skillsLabel")} title={t("skillsTitle")} />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, catIndex) => (

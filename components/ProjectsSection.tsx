@@ -4,11 +4,15 @@ import SectionHeading from "./SectionHeading";
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/data/projects";
 
+import { useLanguage } from "./LanguageContext";
+
 export default function ProjectsSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="projects" className="scroll-mt-20 py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading label="Work" title="Featured Projects" />
+        <SectionHeading label={t("projectsLabel")} title={t("projectsTitle")} />
 
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project, index) => (

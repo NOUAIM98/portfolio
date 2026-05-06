@@ -11,11 +11,25 @@ interface ProjectCardProps {
   featured?: boolean;
 }
 
+import { useLanguage } from "./LanguageContext";
+import type { TranslationKey } from "@/data/translations";
+
 export default function ProjectCard({
   project,
   index,
   featured = false,
 }: ProjectCardProps) {
+  const { t } = useLanguage();
+
+  // Map project to its translation keys
+  const projectKeys: Record<string, { title: TranslationKey; desc: TranslationKey; cat: TranslationKey }> = {
+    "interact-health-pro": { title: "p1Title", desc: "p1Desc", cat: "categoryHealthcare" },
+    "quizgen-ai": { title: "p2Title", desc: "p2Desc", cat: "categoryAI" },
+    "bizlinker": { title: "p3Title", desc: "p3Desc", cat: "categoryB2B" },
+  };
+
+  const keys = projectKeys[project.slug] || { title: "p1Title", desc: "p1Desc", cat: "categoryHealthcare" };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -42,17 +56,17 @@ export default function ProjectCard({
           <div className="flex flex-col p-8 md:p-10">
             <div className="mb-4 flex items-center gap-3">
               <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                {project.category}
+                {t(keys.cat)}
               </span>
               <span className="text-xs text-muted">{project.year}</span>
             </div>
             
             <h3 className="mb-3 text-2xl font-bold text-foreground md:text-3xl transition-colors group-hover:text-accent-light">
-              {project.title}
+              {t(keys.title)}
             </h3>
             
             <p className="mb-6 text-base leading-relaxed text-muted line-clamp-3">
-              {project.shortDescription}
+              {t(keys.desc)}
             </p>
 
             {/* Tech Badges */}
@@ -69,7 +83,7 @@ export default function ProjectCard({
                 href={`/projects/${project.slug}`}
                 className="inline-flex items-center gap-2 rounded-xl bg-accent/10 px-5 py-2.5 text-sm font-semibold text-accent transition-all hover:bg-accent hover:text-white"
               >
-                View Case Study
+                {t("viewCaseStudy")}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -93,7 +107,7 @@ export default function ProjectCard({
                   rel="noopener noreferrer"
                   className="text-sm font-medium text-muted transition-colors hover:text-foreground"
                 >
-                  Live Demo
+                  {t("liveDemo")}
                 </a>
               )}
               
@@ -104,7 +118,7 @@ export default function ProjectCard({
                   rel="noopener noreferrer"
                   className="text-sm font-medium text-muted transition-colors hover:text-foreground"
                 >
-                  GitHub
+                  {t("github")}
                 </a>
               )}
             </div>

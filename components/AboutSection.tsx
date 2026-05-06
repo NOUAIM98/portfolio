@@ -1,9 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 import FadeIn from "./FadeIn";
 
 export default function AboutSection() {
+  const { t } = useLanguage();
+
+  const focusAreas = [
+    t("focus1"),
+    t("focus2"),
+    t("focus3"),
+    t("focus4"),
+  ];
+
+  const experiences = [
+    { role: t("heroBadge"), company: "Freelance / Projects", year: "2023 - Present", current: true },
+    { role: "Full-Stack Dev", company: "Startup Hub", year: "2021 - 2023", current: false },
+    { role: "Frontend Developer", company: "Web Studio", year: "2019 - 2021", current: false },
+  ];
+
   return (
     <section id="about" className="scroll-mt-20 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
@@ -29,8 +45,8 @@ export default function AboutSection() {
                   <div>
                     <div className="mb-2 text-accent-light font-bold">const engineer = {"{"}</div>
                     <p className="text-foreground pl-4 text-base md:text-lg">
-                      <span className="text-muted">role:</span> &quot;Software Engineer&quot;,<br/>
-                      <span className="text-muted">mission:</span> &quot;Building scalable mobile & web apps with real-world impact&quot;
+                      <span className="text-muted">role:</span> &quot;{t("heroBadge")}&quot;,<br/>
+                      <span className="text-muted">mission:</span> &quot;{t("aboutMission")}&quot;
                     </p>
                     <div className="text-accent-light font-bold">{"}"}</div>
                   </div>
@@ -38,9 +54,9 @@ export default function AboutSection() {
 
                 <div className="space-y-8">
                   <div>
-                    <span className="text-purple-400 font-bold block mb-4 uppercase text-[10px] tracking-widest">// Focus Areas</span>
+                    <span className="text-purple-400 font-bold block mb-4 uppercase text-[10px] tracking-widest">// {t("aboutFocusAreas")}</span>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-4">
-                      {["Mobile & Web Dev", "Backend APIs", "AI Integrations", "Healthcare Tech"].map((item) => (
+                      {focusAreas.map((item) => (
                         <div key={item} className="flex items-center gap-2 text-muted-light">
                           <span className="text-accent">→</span> {item}
                         </div>
@@ -49,10 +65,9 @@ export default function AboutSection() {
                   </div>
 
                   <div>
-                    <span className="text-purple-400 font-bold block mb-4 uppercase text-[10px] tracking-widest">// Philosophy</span>
+                    <span className="text-purple-400 font-bold block mb-4 uppercase text-[10px] tracking-widest">// {t("aboutPhilosophy")}</span>
                     <p className="pl-4 text-muted-light leading-relaxed italic border-l-2 border-accent/20">
-                      &quot;I believe great software is invisible — it gets out of the
-                      user&apos;s way and just works. I obsess over clean architecture, sub-second response times, and graceful error handling.&quot;
+                      &quot;{t("aboutPhilosophyText")}&quot;
                     </p>
                   </div>
                 </div>
@@ -68,14 +83,10 @@ export default function AboutSection() {
           <FadeIn delay={0.2} className="lg:col-span-2">
             <div className="rounded-3xl border border-border bg-surface p-8 shadow-sm">
               <h3 className="mb-8 text-sm font-bold uppercase tracking-[0.2em] text-muted border-b border-border pb-4">
-                Experience
+                {t("experienceTitle")}
               </h3>
               <div className="space-y-10">
-                {[
-                  { role: "Software Engineer", company: "Freelance / Projects", year: "2023 - Present", current: true },
-                  { role: "Full-Stack Dev", company: "Startup Hub", year: "2021 - 2023", current: false },
-                  { role: "Frontend Developer", company: "Web Studio", year: "2019 - 2021", current: false },
-                ].map((item, index) => (
+                {experiences.map((item, index) => (
                   <div key={index} className="group relative pl-8">
                     {index !== 2 && (
                       <div className="absolute left-[3px] top-4 h-[calc(100%+40px)] w-0.5 bg-gradient-to-b from-accent/50 to-transparent"></div>
@@ -111,7 +122,7 @@ export default function AboutSection() {
                       <polyline points="7 10 12 15 17 10" />
                       <line x1="12" x2="12" y1="15" y2="3" />
                     </svg>
-                    Download Resume
+                    {t("downloadResume")}
                   </a>
               </div>
             </div>
