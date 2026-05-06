@@ -111,11 +111,21 @@ export const translations = {
     aboutFocusAreas: "Focus Areas",
     aboutPhilosophy: "Philosophy",
     aboutPhilosophyText: "I believe great software is invisible — it gets out of the user's way and just works. I obsess over clean architecture, sub-second response times, and graceful error handling.",
-    downloadResume: "Download Resume",
+    downloadResume: "Download CV",
     focus1: "Mobile & Web Dev",
     focus2: "Backend APIs",
     focus3: "AI Integrations",
     focus4: "Healthcare Tech",
+
+    // Experience Data
+    exp1Date: "Oct 2024 – May 2025",
+    exp1Role: "Full Stack Developer & Acting Tech Lead",
+    exp1Company: "Interact Health PRO",
+    exp1Location: "Canada (Remote)",
+    exp2Date: "Jun – Sep 2024",
+    exp2Role: "Software Engineering Analyst Intern",
+    exp2Company: "OMNISHORE MED TECH",
+    exp2Location: "Casablanca, Morocco",
 
     // Skills
     skillsTitle: "Skills & Technologies",
@@ -272,6 +282,16 @@ export const translations = {
     focus2: "APIs Backend",
     focus3: "Intégrations IA",
     focus4: "Tech Santé",
+
+    // Experience Data
+    exp1Date: "Oct. 2024 – Mai 2025",
+    exp1Role: "Développeur Full Stack & Tech Lead par intérim",
+    exp1Company: "Interact Health PRO",
+    exp1Location: "Canada (À distance)",
+    exp2Date: "Juin – Sep. 2024",
+    exp2Role: "Analyste Stagiaire en Génie Logiciel",
+    exp2Company: "OMNISHORE MED TECH",
+    exp2Location: "Casablanca, Maroc",
 
     // Skills
     skillsTitle: "Compétences & Technologies",

@@ -6,7 +6,7 @@ import { useLanguage } from "./LanguageContext";
 import FadeIn from "./FadeIn";
 
 export default function HeroSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section className="relative flex min-h-[90vh] items-center pt-20">
@@ -81,7 +81,8 @@ export default function HeroSection() {
               </a>
 
               <a
-                href="/cv.pdf"
+                href={language === "fr" ? "/cv-fr.pdf" : "/cv-en.pdf"}
+                download
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl border border-border-light bg-surface-light px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-accent/40 hover:bg-surface-hover"
@@ -101,7 +102,7 @@ export default function HeroSection() {
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" x2="12" y1="15" y2="3" />
                 </svg>
-                Download CV
+                {t("downloadResume")}
               </a>
             </div>
           </FadeIn>

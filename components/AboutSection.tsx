@@ -15,10 +15,24 @@ export default function AboutSection() {
   ];
 
   const experiences = [
-    { role: t("heroBadge"), company: "Freelance / Projects", year: "2023 - Present", current: true },
-    { role: "Full-Stack Dev", company: "Startup Hub", year: "2021 - 2023", current: false },
-    { role: "Frontend Developer", company: "Web Studio", year: "2019 - 2021", current: false },
+    { 
+      role: t("exp1Role"), 
+      company: t("exp1Company"), 
+      location: t("exp1Location"),
+      year: t("exp1Date"), 
+      current: true 
+    },
+    { 
+      role: t("exp2Role"), 
+      company: t("exp2Company"), 
+      location: t("exp2Location"),
+      year: t("exp2Date"), 
+      current: false 
+    },
   ];
+
+  const { language } = useLanguage();
+  const cvLink = language === "fr" ? "/cv-fr.pdf" : "/cv-en.pdf";
 
   return (
     <section id="about" className="scroll-mt-20 py-24 md:py-32">
@@ -88,7 +102,7 @@ export default function AboutSection() {
               <div className="space-y-10">
                 {experiences.map((item, index) => (
                   <div key={index} className="group relative pl-8">
-                    {index !== 2 && (
+                    {index !== experiences.length - 1 && (
                       <div className="absolute left-[3px] top-4 h-[calc(100%+40px)] w-0.5 bg-gradient-to-b from-accent/50 to-transparent"></div>
                     )}
                     <div className={`absolute left-0 top-1.5 h-2 w-2 rounded-full border-2 border-accent ${item.current ? "bg-accent shadow-[0_0_10px_rgba(109,90,230,0.5)]" : "bg-surface"}`}></div>
@@ -96,13 +110,15 @@ export default function AboutSection() {
                     <div className="text-[10px] font-bold uppercase tracking-widest text-accent mb-2">{item.year}</div>
                     <div className="font-bold text-foreground text-lg group-hover:text-accent transition-colors">{item.role}</div>
                     <div className="text-sm font-medium text-muted">{item.company}</div>
+                    <div className="text-[10px] text-muted/60 mt-1">{item.location}</div>
                   </div>
                 ))}
               </div>
               
               <div className="mt-12">
                  <a
-                    href="/cv.pdf"
+                    href={cvLink}
+                    download
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex w-full justify-center items-center gap-3 rounded-2xl bg-accent px-6 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-accent-light shadow-lg shadow-accent/20 hover:shadow-accent/40"
