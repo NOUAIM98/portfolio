@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 import FadeIn from "@/components/FadeIn";
+import { useLanguage } from "@/components/LanguageContext";
+import type { TranslationKey } from "@/data/translations";
 
 interface ProjectDetailClientProps {
   project: Project;
@@ -13,6 +15,54 @@ interface ProjectDetailClientProps {
 export default function ProjectDetailClient({
   project,
 }: ProjectDetailClientProps) {
+  const { t } = useLanguage();
+
+  // Map project slug to its translation keys
+  const projectKeys: Record<string, any> = {
+    "interact-health-pro": {
+      heroSubtitle: "p1HeroSubtitle",
+      problem: "p1Problem",
+      solution: "p1Solution",
+      architecture: "p1Architecture",
+      impactLabels: ["p1Impact1", "p1Impact2", "p1Impact3", "p1Impact4"],
+      features: ["p1Feature1", "p1Feature2", "p1Feature3", "p1Feature4", "p1Feature5", "p1Feature6", "p1Feature7", "p1Feature8"],
+      challenges: [
+        { title: "p1Challenge1Title", desc: "p1Challenge1Desc" },
+        { title: "p1Challenge2Title", desc: "p1Challenge2Desc" },
+        { title: "p1Challenge3Title", desc: "p1Challenge3Desc" },
+      ],
+      cat: "categoryHealthcare"
+    },
+    "quizgen-ai": {
+      heroSubtitle: "p2HeroSubtitle",
+      problem: "p2Problem",
+      solution: "p2Solution",
+      architecture: "p2Architecture",
+      impactLabels: ["p2Impact1", "p2Impact2", "p2Impact3", "p2Impact4"],
+      features: ["p2Feature1", "p2Feature2", "p2Feature3", "p2Feature4", "p2Feature5", "p2Feature6", "p2Feature7", "p2Feature8"],
+      challenges: [
+        { title: "p2Challenge1Title", desc: "p2Challenge1Desc" },
+        { title: "p2Challenge2Title", desc: "p2Challenge2Desc" },
+      ],
+      cat: "categoryAI"
+    },
+    "bizlinker": {
+      heroSubtitle: "p3HeroSubtitle",
+      problem: "p3Problem",
+      solution: "p3Solution",
+      architecture: "p3Architecture",
+      impactLabels: ["p3Impact1", "p3Impact2", "p3Impact3", "p3Impact4"],
+      features: ["p3Feature1", "p3Feature2", "p3Feature3", "p3Feature4", "p3Feature5", "p3Feature6", "p3Feature7"],
+      challenges: [
+        { title: "p3Challenge1Title", desc: "p3Challenge1Desc" },
+        { title: "p3Challenge2Title", desc: "p3Challenge2Desc" },
+      ],
+      cat: "categoryB2B"
+    },
+  };
+
+  const keys = projectKeys[project.slug] || projectKeys["interact-health-pro"];
+
   return (
     <article className="pb-24">
       {/* Hero Header */}
@@ -49,7 +99,7 @@ export default function ProjectDetailClient({
                 <path d="m12 19-7-7 7-7" />
                 <path d="M19 12H5" />
               </svg>
-              Back to Projects
+              {t("backToProjects")}
             </Link>
           </FadeIn>
 
@@ -57,7 +107,7 @@ export default function ProjectDetailClient({
             <FadeIn delay={0.1}>
               <div className="mb-6 flex items-center gap-4">
                 <span className="rounded-full bg-accent/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent">
-                  {project.category}
+                  {t(keys.cat)}
                 </span>
                 <span className="text-sm font-medium text-muted">{project.year}</span>
               </div>
@@ -71,7 +121,7 @@ export default function ProjectDetailClient({
 
             <FadeIn delay={0.3}>
               <p className="text-xl leading-relaxed text-muted md:text-2xl font-medium max-w-2xl">
-                {project.hero.subtitle}
+                {t(keys.heroSubtitle)}
               </p>
             </FadeIn>
 
@@ -84,7 +134,7 @@ export default function ProjectDetailClient({
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-light shadow-lg shadow-accent/20"
                   >
-                    View Live Site
+                    {t("viewLiveSite")}
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
                   </a>
                 )}
@@ -155,7 +205,7 @@ export default function ProjectDetailClient({
                       {metric.value}
                     </p>
                     <p className="text-sm font-semibold text-muted uppercase tracking-wider">
-                      {metric.label}
+                      {keys.impactLabels ? t(keys.impactLabels[index] as TranslationKey) : metric.label}
                     </p>
                   </div>
                 </FadeIn>
@@ -172,9 +222,9 @@ export default function ProjectDetailClient({
                 <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-500">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                 </div>
-                <h2 className="mb-4 text-2xl font-bold text-foreground">The Problem</h2>
+                <h2 className="mb-4 text-2xl font-bold text-foreground">{t("theProblem")}</h2>
                 <p className="text-lg leading-relaxed text-muted">
-                  {project.problem}
+                  {t(keys.problem)}
                 </p>
               </div>
             </FadeIn>
@@ -184,9 +234,9 @@ export default function ProjectDetailClient({
                 <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                <h2 className="mb-4 text-2xl font-bold text-foreground">The Solution</h2>
+                <h2 className="mb-4 text-2xl font-bold text-foreground">{t("theSolution")}</h2>
                 <p className="text-lg leading-relaxed text-muted">
-                  {project.solution}
+                  {t(keys.solution)}
                 </p>
               </div>
             </FadeIn>
@@ -201,7 +251,7 @@ export default function ProjectDetailClient({
                  <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
               </div>
               
-              <h2 className="mb-12 text-3xl font-bold text-foreground">Technical Architecture</h2>
+              <h2 className="mb-12 text-3xl font-bold text-foreground">{t("technicalArchitecture")}</h2>
               
               <div className="flex flex-col md:flex-row items-center justify-between gap-12 py-10">
                 <div className="flex flex-col gap-6 w-full md:w-auto">
@@ -210,7 +260,7 @@ export default function ProjectDetailClient({
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
                     </div>
                     <div>
-                      <p className="text-sm font-bold uppercase tracking-widest text-muted">Client</p>
+                      <p className="text-sm font-bold uppercase tracking-widest text-muted">{t("client")}</p>
                       <p className="font-semibold">Mobile App</p>
                     </div>
                   </div>
@@ -220,7 +270,7 @@ export default function ProjectDetailClient({
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
                     </div>
                     <div>
-                      <p className="text-sm font-bold uppercase tracking-widest text-muted">Admin</p>
+                      <p className="text-sm font-bold uppercase tracking-widest text-muted">{t("admin")}</p>
                       <p className="font-semibold">Dashboard</p>
                     </div>
                   </div>
@@ -234,7 +284,7 @@ export default function ProjectDetailClient({
                   <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
                   </div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1">API Layer</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1">{t("apiLayer")}</p>
                   <p className="text-xl font-bold">Node.js / Laravel</p>
                 </div>
 
@@ -247,7 +297,7 @@ export default function ProjectDetailClient({
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 3 9 3 9 3s9 0 9-3V5"/><path d="M3 12c0 3 9 3 9 3s9 0 9-3"/></svg>
                     </div>
                     <div>
-                      <p className="text-sm font-bold uppercase tracking-widest text-muted">Database</p>
+                      <p className="text-sm font-bold uppercase tracking-widest text-muted">{t("database")}</p>
                       <p className="font-semibold">Mongo / MySQL</p>
                     </div>
                   </div>
@@ -255,7 +305,7 @@ export default function ProjectDetailClient({
 
               <div className="mt-12 p-8 rounded-2xl bg-surface-light border border-border-light">
                 <p className="text-muted leading-relaxed">
-                  {project.architecture}
+                  {t(keys.architecture)}
                 </p>
               </div>
             </div>
@@ -271,7 +321,7 @@ export default function ProjectDetailClient({
                 <span className="text-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                 </span>
-                Core Features
+                {t("coreFeatures")}
               </h2>
               <div className="space-y-4">
                 {project.features.map((feature, index) => (
@@ -279,7 +329,9 @@ export default function ProjectDetailClient({
                     <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </div>
-                    <p className="text-muted leading-relaxed font-medium">{feature}</p>
+                    <p className="text-muted leading-relaxed font-medium">
+                      {keys.features && keys.features[index] ? t(keys.features[index] as TranslationKey) : feature}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -293,16 +345,16 @@ export default function ProjectDetailClient({
                  <span className="text-red-500">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
                 </span>
-                Challenges & Solutions
+                {t("challengesAndSolutions")}
               </h2>
               <div className="space-y-6">
                 {project.challenges.map((challenge, index) => (
                   <div key={index} className="p-6 rounded-2xl bg-red-500/5 border border-red-500/10 transition-all hover:bg-red-500/10">
                     <h3 className="mb-3 text-lg font-bold text-foreground tracking-tight">
-                      {challenge.title}
+                      {keys.challenges && keys.challenges[index] ? t(keys.challenges[index].title as TranslationKey) : challenge.title}
                     </h3>
                     <p className="text-sm leading-relaxed text-muted font-medium">
-                      {challenge.description}
+                      {keys.challenges && keys.challenges[index] ? t(keys.challenges[index].desc as TranslationKey) : challenge.description}
                     </p>
                   </div>
                 ))}
@@ -314,7 +366,7 @@ export default function ProjectDetailClient({
         {/* Gallery Section */}
         {project.images && project.images.length > 0 && (
           <section className="mx-auto max-w-5xl px-6">
-            <h2 className="mb-12 text-3xl font-bold text-foreground">Interface Gallery</h2>
+            <h2 className="mb-12 text-3xl font-bold text-foreground">{t("interfaceGallery")}</h2>
             <div className="grid gap-8">
               {project.images.map((img, index) => (
                 <FadeIn key={index} delay={index * 0.1}>
@@ -336,7 +388,7 @@ export default function ProjectDetailClient({
         {/* Tech Stack Footer */}
         <section className="mx-auto max-w-5xl px-6">
            <div className="rounded-3xl border border-border bg-surface p-10 text-center">
-              <h2 className="mb-8 text-sm font-bold uppercase tracking-[0.2em] text-muted">Built With</h2>
+              <h2 className="mb-8 text-sm font-bold uppercase tracking-[0.2em] text-muted">{t("builtWith")}</h2>
               <div className="flex flex-wrap justify-center gap-3">
                 {project.techStack.map((tech) => (
                   <span
