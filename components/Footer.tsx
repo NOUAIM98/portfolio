@@ -1,3 +1,5 @@
+export default function Footer() {
+  return (
     <footer className="border-t border-border py-12 md:py-20 bg-background">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-border pb-12">
@@ -41,3 +43,5 @@
         </div>
       </div>
     </footer>
+  );
+}

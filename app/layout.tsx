@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "NOUAIM | Full-Stack & Mobile Engineer",
+  title: "MOHAMED NOUAIM EL AAKIL | Full-Stack & Mobile Engineer",
   description:
     "Portfolio of NOUAIM — Full-Stack & Mobile Engineer building scalable apps, AI systems, and healthcare platforms.",
   keywords: [
