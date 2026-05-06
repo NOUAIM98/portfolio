@@ -1,3 +1,5 @@
+"use client";
+
 import { useLanguage } from "./LanguageContext";
 
 export default function Footer() {
