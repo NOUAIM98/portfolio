@@ -40,6 +40,8 @@ export const projects: Project[] = [
     ],
     category: "Healthcare · Full-Stack · Mobile",
     year: "2024",
+    liveUrl: "https://interact-health-pro.demo",
+    githubUrl: "https://github.com/NOUAIM98/interact-health-pro",
     videoUrl: "/quizgen-video.mp4",
     hero: {
       image: "/interact-health-mockup.jpg",
@@ -113,6 +115,8 @@ export const projects: Project[] = [
     ],
     category: "AI · EdTech · Full-Stack",
     year: "2024",
+    liveUrl: "https://quizgen-ai.demo",
+    githubUrl: "https://github.com/NOUAIM98/QuizGen-AI",
     videoUrl: "/interact-health-video.mp4",
     hero: {
       image: "/quizgen-hero.png",
@@ -173,6 +177,8 @@ export const projects: Project[] = [
     images: ["/bizlinker-hero.png"],
     category: "B2B · Networking · Full-Stack · Mobile",
     year: "2024",
+    liveUrl: "https://getbizlinker.site",
+    githubUrl: "https://github.com/NOUAIM98/Bizlinker-website-",
     hero: {
       image: "/bizlinker-hero.png",
       subtitle:

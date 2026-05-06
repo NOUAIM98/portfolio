@@ -20,14 +20,15 @@ export default function HeroSection() {
 
           <FadeIn delay={0.1}>
             <h1 className="mb-8 text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-[80px] leading-[1.1]">
-              Building Scalable Apps <span className="text-accent">&</span> <br className="hidden md:block" />
+              Full-Stack & Mobile Engineer <br className="hidden md:block" />
+              Building <span className="text-accent">Scalable Apps</span> & <br className="hidden md:block" />
               <span className="text-accent">AI Systems</span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.2}>
             <p className="mb-10 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-              I design and build production-grade systems — from healthcare platforms and AI-powered tools to real-time networking solutions. Focused on clean architecture, performance, and delivering real impact.
+              I develop production-ready mobile and web applications with real-world impact in healthcare and AI platforms.
             </p>
           </FadeIn>
 
@@ -35,13 +36,13 @@ export default function HeroSection() {
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="#projects"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-light"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-accent-light"
               >
                 View Projects
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -59,12 +60,12 @@ export default function HeroSection() {
                 href="https://github.com/NOUAIM98"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-border-light bg-surface-light px-6 py-3.5 text-sm font-medium text-foreground transition-all hover:border-accent/40 hover:bg-surface-hover"
+                className="inline-flex items-center gap-2 rounded-xl border border-border-light bg-surface-light px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-accent/40 hover:bg-surface-hover"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -82,12 +83,12 @@ export default function HeroSection() {
                 href="/cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-border-light bg-surface-light px-6 py-3.5 text-sm font-medium text-foreground transition-all hover:border-accent/40 hover:bg-surface-hover"
+                className="inline-flex items-center gap-2 rounded-xl border border-border-light bg-surface-light px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-accent/40 hover:bg-surface-hover"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
