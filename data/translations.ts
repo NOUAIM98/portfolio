@@ -48,7 +48,7 @@ export const translations = {
     p1Challenge2Title: "Role-Based Access Across Three Clients",
     p1Challenge2Desc: "Implemented a unified RBAC system using Firebase custom claims that propagates across mobile, API, and admin dashboard, ensuring consistent permission enforcement.",
     p1Challenge3Title: "Startup Crash Resilience",
-    p1Challenge3Desc: "Resolved critical module-level initialization issues where missing environment variables would crash the entire API. Implemented graceful degradation patterns so non-critical services fail softly.",y.",
+    p1Challenge3Desc: "Resolved critical module-level initialization issues where missing environment variables would crash the entire API. Implemented graceful degradation patterns so non-critical services fail softly.",
 
     // Project 2 Detailed Content
     p2HeroSubtitle: "The platform enables educators and organizations to transform PDFs, images, and complex documents into pedagogically sound quizzes in seconds.",
