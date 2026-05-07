@@ -33,7 +33,7 @@ export const projects: Project[] = [
     slug: "interact-health-pro",
     title: "Interact Health PRO",
     shortDescription:
-      "A healthcare management platform with React Native mobile app, Node.js API, and React admin dashboard — enabling clinicians to track patient recovery and streamline workflows.",
+      "An enterprise-grade healthcare management suite engineered for clinical efficiency and secure provider-patient interactions.",
     thumbnail: "/interact-health-mockup.jpg",
     images: [
       "/interact-health-mockup.jpg",
@@ -46,37 +46,33 @@ export const projects: Project[] = [
     hero: {
       image: "/interact-health-mockup.jpg",
       subtitle:
-        "End-to-end healthcare platform enabling clinicians to manage patients, track concussion recovery, and streamline administrative workflows across mobile, web, and API.",
+        "The platform streamlines healthcare workflows by integrating mobile clinician tools, administrative dashboards, and automated communication services into a unified, HIPAA-aware ecosystem.",
     },
     problem:
       "Healthcare professionals were relying on fragmented tools — paper records, spreadsheets, and disconnected apps — to manage patient data, track concussion recovery, and coordinate care. This led to data silos, delayed interventions, and significant administrative overhead that reduced time spent with patients.",
     solution:
-      "Built a unified monorepo platform consisting of three tightly integrated systems: a React Native mobile app for clinicians on the go, a robust Node.js/Express REST API with Firebase Auth and role-based access control, and a React admin dashboard for supervisors and administrators. The architecture supports real-time data sync, push notifications, and comprehensive audit logging.",
+      "Built on a robust full-stack foundation, the system features a modular Express.js backend that serves as the single source of truth for a React Native mobile app and a React-based admin dashboard. Security is prioritized through a multi-layered approach: Firebase Authentication manages user identity, while custom JWT middleware enforces granular role-based access control (RBAC) across protected API routes. The administrative layer is powered by AdminJS for sophisticated resource management, and the infrastructure is orchestrated across Render and Vercel for maximum reliability.",
     techStack: [
       "React Native",
       "Expo",
-      "TypeScript",
-      "Node.js",
-      "Express",
-      "Firebase Auth",
-      "MongoDB",
       "React",
-      "Tailwind CSS",
+      "Express.js",
+      "MongoDB",
+      "Firebase Auth",
+      "AdminJS",
+      "SendGrid",
       "Resend",
-      "Push Notifications",
+      "Render",
+      "Vercel",
     ],
     features: [
-      "Secure patient onboarding with multi-step forms and validation",
-      "Real-time symptom tracking with visual progress charts",
-      "Role-based access control (Clinician, Supervisor, Admin)",
-      "Push notification system for appointment reminders and alerts",
-      "Admin dashboard with analytics, user management, and audit logs",
-      "Offline-capable mobile app with background sync",
-      "Email notification system via Resend for account actions",
-      "Rate-limited API with comprehensive error handling",
+      "Multi-Role RBAC System: Granular permission management for Admins, Providers, and Patients.",
+      "Provider Linking System: Specialized architecture for connecting clinicians with patient records.",
+      "Automated Notification Architecture: Integrated email and push notification flows for alerts.",
+      "Production-Grade Infrastructure: Secure API design with modular service layers.",
     ],
     architecture:
-      "The system follows a monorepo architecture with three packages: mobile (React Native/Expo), api (Node.js/Express), and web-admin (React/Vite). The API layer implements a service-oriented architecture with controllers, services, and data access layers. Firebase Auth handles authentication with custom claims for role management. MongoDB serves as the primary datastore with Mongoose ODM for schema validation. The mobile app uses a custom sync engine for offline-first capabilities, queuing mutations locally and replaying them when connectivity is restored.",
+      "The system follows a monorepo architecture with three core packages: a mobile clinician client (React Native/Expo), a modular backend API (Node.js/Express), and a centralized management dashboard (React/AdminJS). The API layer implements a service-oriented design with controllers, services, and data access layers. Firebase Auth handles identity management, while custom claims facilitate role-based access. MongoDB serves as the primary datastore, with the infrastructure distributed across Render and Vercel for optimal reliability.",
     impact: [
       { label: "Reduction in Admin Workload", value: "30%" },
       { label: "API Response Time (p95)", value: "<200ms" },
@@ -87,12 +83,12 @@ export const projects: Project[] = [
       {
         title: "Offline-First Data Sync",
         description:
-          "Designed a custom sync engine that queues mutations in SQLite when offline and replays them in order upon reconnection, handling conflict resolution with last-write-wins semantics and server-side validation.",
+          "Designed a custom sync engine that queues mutations in SQLite when offline and replays them in order upon reconnection, handling conflict resolution with last-write-wins semantics.",
       },
       {
         title: "Role-Based Access Across Three Clients",
         description:
-          "Implemented a unified RBAC system using Firebase custom claims that propagates across mobile, API, and admin dashboard, ensuring consistent permission enforcement at every layer.",
+          "Implemented a unified RBAC system using Firebase custom claims that propagates across mobile, API, and admin dashboard, ensuring consistent permission enforcement.",
       },
       {
         title: "Startup Crash Resilience",
@@ -105,7 +101,7 @@ export const projects: Project[] = [
     slug: "quizgen-ai",
     title: "QuizGen-AI",
     shortDescription:
-      "An AI-powered platform that transforms PDFs, documents, or topics into structured, interactive quizzes using large language models — in seconds.",
+      "A high-performance AI assessment engine designed to automate the transition from raw documentation to structured educational content.",
     thumbnail: "/quizgen-hero.png",
     images: [
       "/quizgen-hero.png",
@@ -121,34 +117,34 @@ export const projects: Project[] = [
     hero: {
       image: "/quizgen-hero.png",
       subtitle:
-        "Turn knowledge into smart quizzes — upload PDFs or enter topics, and AI generates comprehensive assessments instantly.",
+        "The platform enables educators and organizations to transform PDFs, images, and complex documents into pedagogically sound quizzes in seconds.",
     },
     problem:
       "Educators and content creators spend hours manually crafting quizzes from course material. Existing tools generate shallow, keyword-based questions that fail to test genuine understanding. There was no accessible solution that could analyze complex material and produce pedagogically sound assessments.",
     solution:
-      "Built a full-stack platform that accepts raw text, PDFs, or topic descriptions and uses large language models to generate multi-format quizzes (multiple choice, true/false, short answer). The system includes intelligent difficulty calibration, answer explanation generation, and a quiz-taking interface with real-time scoring.",
+      "The system utilizes a decoupled full-stack architecture featuring a modular React/Next.js frontend and a scalable Express.js backend. At its core is an asynchronous AI generation pipeline that orchestrates document parsing and LLM synthesis. The backend manages state via MongoDB and handles complex file processing, while the frontend leverages a component-driven Tailwind UI system for a seamless, responsive user experience.",
     techStack: [
+      "React",
       "Next.js",
+      "Tailwind CSS",
       "TypeScript",
+      "Node.js",
+      "Express.js",
+      "Gemini API",
       "OpenAI API",
       "LangChain",
-      "Tailwind CSS",
-      "PostgreSQL",
-      "Prisma",
+      "MongoDB",
       "Vercel",
+      "Render",
     ],
     features: [
-      "Multi-format quiz generation (MCQ, True/False, Short Answer)",
-      "Difficulty calibration from Easy to Expert",
-      "PDF and raw text input parsing",
-      "AI-generated answer explanations",
-      "Real-time quiz-taking with instant scoring",
-      "Quiz history and performance analytics",
-      "Shareable quiz links with unique codes",
-      "Rate-limited API with token usage tracking",
+      "Intelligent Content Pipeline: Automated extraction of text from PDFs and documents.",
+      "Asynchronous Quiz Synthesis: Multi-format quiz generation with real-time progress tracking.",
+      "Role-Based Security: Secure authentication system with protected routes.",
+      "Advanced Generation Controls: Fine-grained calibration for difficulty levels and learning objectives.",
     ],
     architecture:
-      "The application leverages a powerful Retrieval-Augmented Generation (RAG) pipeline. Users upload a PDF or enter a topic via the React UI, which is passed to the Retrieval service. The system extracts and chunks the text, indexing it into an Elastic Search database. When generating a quiz, relevant chunks are retrieved and sent to the Generation service (powered by Gemini 2.5 Flash). Gemini processes the context and synthesizes structured quiz questions and answers, which are then displayed to the user.",
+      "The application leverages a decoupled architecture where a Next.js frontend communicates with an Express.js backend. At its core is an asynchronous Retrieval-Augmented Generation (RAG) pipeline. The system extracts and chunks text from uploaded files, indexing them for retrieval. The generation service, powered by Gemini and OpenAI, processes the context to synthesize structured quiz questions. The entire ecosystem is deployed across a distributed Vercel and Render infrastructure for high availability.",
     impact: [
       { label: "Generation Time", value: "<8s" },
       { label: "Question Accuracy", value: "94%" },
@@ -172,7 +168,7 @@ export const projects: Project[] = [
     slug: "bizlinker",
     title: "BizLinker",
     shortDescription:
-      "A B2B networking platform connecting businesses through intelligent matching, real-time messaging, and structured opportunity discovery.",
+      "A unified B2B and consumer networking ecosystem that bridges the gap between web-based business management and mobile-first user engagement.",
     thumbnail: "/bizlinker-hero.png",
     images: ["/bizlinker-hero.png"],
     category: "B2B · Networking · Full-Stack · Mobile",
@@ -182,36 +178,34 @@ export const projects: Project[] = [
     hero: {
       image: "/bizlinker-hero.png",
       subtitle:
-        "A full-stack platform built to help users explore, review, and engage with local businesses, services, and events.",
+        "Designed for scalability, the platform facilitates seamless discovery, networking, and opportunity management through a synchronized cross-platform experience.",
     },
     problem:
       "Users needed a centralized, reliable platform to discover local businesses and services, complete with authentic reviews and an easy-to-use mobile experience. Existing solutions were either web-only or lacked a cohesive ecosystem for both business owners and consumers.",
     solution:
-      "Developed a comprehensive platform consisting of a responsive web interface (React) and a cross-platform mobile app (React Native). The system is powered by a robust Laravel 11 backend with secure REST APIs, handling everything from multi-step onboarding to role-based routing.",
+      "The platform implements a multi-client architecture powered by a centralized RESTful service layer. The ecosystem comprises a React/Next.js web application for administrative and desktop users, alongside a React Native + Expo mobile application for on-the-go networking. A shared API communication layer ensures data consistency across all platforms, utilizing MongoDB and Firebase for real-time synchronization and secure data management.",
     techStack: [
-      "ReactJS",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
       "React Native",
       "Expo",
-      "Laravel 11",
-      "PHP",
-      "MySQL",
-      "Tailwind CSS",
-      "REST API"
+      "Node.js",
+      "MongoDB",
+      "Firebase",
+      "Vercel",
     ],
     features: [
-      "Multi-step business, service & event applications",
-      "Ratings & review submission system",
-      "Responsive web UI with Tailwind CSS",
-      "Cross-platform mobile app (iOS/Android)",
-      "Role-based routing (User, Business Owner, Admin)",
-      "Secure REST API authentication",
-      "File and image upload management"
+      "Multi-Platform Synchronization: Real-time data consistency between web and mobile clients.",
+      "Intelligent Networking Engine: Business discovery and engagement with structured data management.",
+      "Unified Auth System: Secure authentication flow supporting multiple user roles.",
+      "Scalable Business Ecosystem: Robust architecture designed for complex networking flows.",
     ],
     architecture:
-      "The system follows a decoupled architecture. The frontend web application is built with ReactJS and TailwindCSS, hosted on Vercel. The mobile application is built using React Native and Expo. Both clients communicate with a centralized backend API built on Laravel 11 (PHP) and MySQL, which handles authentication, business logic, and local storage for media uploads.",
+      "The system follows a decoupled architecture where both the React/Next.js web frontend and the React Native mobile app communicate with a centralized RESTful API service. The deployment pipeline is optimized for simultaneous updates across web and mobile platforms, ensuring feature parity. Data persistence and real-time features are managed through a combination of MongoDB and Firebase, providing a seamless user experience across the entire networking ecosystem.",
     impact: [
       { label: "Platform Ecosystem", value: "Web + Mobile" },
-      { label: "Backend Framework", value: "Laravel 11" },
+      { label: "Backend Framework", value: "Node.js" },
       { label: "API Architecture", value: "RESTful" },
       { label: "Codebase", value: "Full-Stack" },
     ],
@@ -219,7 +213,7 @@ export const projects: Project[] = [
       {
         title: "Unified API for Web & Mobile",
         description:
-          "Designed and implemented a single Laravel REST API that securely serves both the React web frontend and the React Native mobile app, ensuring consistent data validation and authentication across all touchpoints.",
+          "Designed and implemented a single REST API that securely serves both the React web frontend and the React Native mobile app, ensuring consistent data validation and authentication.",
       },
       {
         title: "Multi-Platform Onboarding",

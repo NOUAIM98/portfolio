@@ -25,7 +25,7 @@ export default function ProjectDetailClient({
       solution: "p1Solution",
       architecture: "p1Architecture",
       impactLabels: ["p1Impact1", "p1Impact2", "p1Impact3", "p1Impact4"],
-      features: ["p1Feature1", "p1Feature2", "p1Feature3", "p1Feature4", "p1Feature5", "p1Feature6", "p1Feature7", "p1Feature8"],
+      features: ["p1Feature1", "p1Feature2", "p1Feature3", "p1Feature4"],
       challenges: [
         { title: "p1Challenge1Title", desc: "p1Challenge1Desc" },
         { title: "p1Challenge2Title", desc: "p1Challenge2Desc" },
@@ -39,7 +39,7 @@ export default function ProjectDetailClient({
       solution: "p2Solution",
       architecture: "p2Architecture",
       impactLabels: ["p2Impact1", "p2Impact2", "p2Impact3", "p2Impact4"],
-      features: ["p2Feature1", "p2Feature2", "p2Feature3", "p2Feature4", "p2Feature5", "p2Feature6", "p2Feature7", "p2Feature8"],
+      features: ["p2Feature1", "p2Feature2", "p2Feature3", "p2Feature4"],
       challenges: [
         { title: "p2Challenge1Title", desc: "p2Challenge1Desc" },
         { title: "p2Challenge2Title", desc: "p2Challenge2Desc" },
@@ -52,7 +52,7 @@ export default function ProjectDetailClient({
       solution: "p3Solution",
       architecture: "p3Architecture",
       impactLabels: ["p3Impact1", "p3Impact2", "p3Impact3", "p3Impact4"],
-      features: ["p3Feature1", "p3Feature2", "p3Feature3", "p3Feature4", "p3Feature5", "p3Feature6", "p3Feature7"],
+      features: ["p3Feature1", "p3Feature2", "p3Feature3", "p3Feature4"],
       challenges: [
         { title: "p3Challenge1Title", desc: "p3Challenge1Desc" },
         { title: "p3Challenge2Title", desc: "p3Challenge2Desc" },
